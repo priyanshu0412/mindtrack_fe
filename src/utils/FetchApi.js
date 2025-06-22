@@ -19,7 +19,7 @@ const FetchApi = async ({ url, method = "get", query, data }) => {
             })
             return Response
         } catch (error) {
-            console.log("error", error)
+            console.log("error:", error)
         }
 
     }
