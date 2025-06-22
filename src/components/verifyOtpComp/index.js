@@ -50,10 +50,7 @@ const VerifyOtpComp = () => {
         }
 
         setError("");
-        const token = document.cookie
-            .split("; ")
-            .find((row) => row.startsWith("authToken="))
-            ?.split("=")[1];
+        const token = localStorage.getItem("authToken");
         if (!token || user.email !== email) {
             Swal.fire({
                 icon: "error",
