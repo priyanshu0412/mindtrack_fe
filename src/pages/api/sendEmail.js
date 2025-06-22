@@ -21,7 +21,7 @@ export default async function handler(req, res) {
                 to: process.env.EMAIL_RECEIVER,
                 subject: `📩 New Contact Form Submission – MindTrack Application`,
                 text: `
-Hello Team,
+Hello Owner,
 
 You have received a new contact form submission from the MindTrack Application.
 
