@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 
 // ---------------------------------------
 
+
 export default async function handler(req, res) {
     if (req.method === "POST") {
         const { firstName, lastName, email, phone, message } = req.body;
@@ -18,10 +19,26 @@ export default async function handler(req, res) {
             const mailOptions = {
                 from: process.env.EMAIL_USER,
                 to: process.env.EMAIL_RECEIVER,
-                subject: `New Contact Form Submission from in MindTrack Application ${firstName} ${lastName}`,
-                text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
+                subject: `📩 New Contact Form Submission – MindTrack Application`,
+                text: `
+Hello Team,
+
+You have received a new contact form submission from the MindTrack Application.
+
+───────────────────────────────────────
+👤 Name     : ${firstName} ${lastName}
+📧 Email    : ${email}
+📱 Phone    : ${phone}
+
+📝 Message:
+${message}
+───────────────────────────────────────
+
+You can reply directly to this email to get in touch with the user.
+`,
                 replyTo: email,
             };
+
 
 
             await transporter.sendMail(mailOptions);
